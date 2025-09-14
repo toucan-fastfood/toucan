@@ -1,0 +1,296 @@
+[
+  {
+    "en_name": "Bacon Potato",
+    "fa_name": "سیب زمینی بیکن",
+    "ingredients": "سیب زمینی سرخ شده و بیکن با پنیر دیپ چدار",
+    "price": ""
+  },
+  {
+    "en_name": "Mushroom Potato",
+    "fa_name": "سیب زمینی قارچ",
+    "ingredients": "سیب زمینی سرخ شده با سس قارچ",
+    "price": ""
+  },
+  {
+    "en_name": "Baked Potato",
+    "fa_name": "سیب زمینی تنوری",
+    "ingredients": "سیب زمینی تنوری داخل فر با پنیر پیتزا و فلفل دلمه و گوجه فرنگی",
+    "price": ""
+  },
+  {
+    "en_name": "Special Potato",
+    "fa_name": "سیب زمینی ویژه",
+    "ingredients": "سیب زمینی ژامبون ذرت پنیر پیتزا پنیر ورقه‌ای",
+    "price": ""
+  },
+  {
+    "en_name": "Fried Mushroom",
+    "fa_name": "قارچ سوخاری",
+    "ingredients": "قارچ سوخاری",
+    "price": ""
+  },
+  {
+    "en_name": "Fried Salad 2 Roll",
+    "fa_name": "سالاد سوخاری 2 رول",
+    "ingredients": "سوخاری 2 رول کاهو زیتون سبز و سیاه گوجه گیلاسی نون تست سس مخصوص سزار",
+    "price": ""
+  },
+  {
+    "en_name": "Fried Salad 3 Roll",
+    "fa_name": "سالاد سوخاری 3 رول",
+    "ingredients": "سوخاری 3 رول کاهو زیتون سبز و سیاه گوجه گیلاسی نان تست سس مخصوص سزار",
+    "price": ""
+  },
+  {
+    "en_name": "Grilled Salad",
+    "fa_name": "سالاد گریل",
+    "ingredients": "مرغ گریل شده کاهو زیتون سبز و سیاه گوجه گیلاسی نان تست سس مخصوص سزار مخصوص سزار",
+    "price": ""
+  },
+  {
+    "en_name": "Toucan Special Salad",
+    "fa_name": "سالاد ویژه توکان",
+    "ingredients": "کاهو فرانسه زیتون سبز و سیاه پنیر کبابی گردو تخمه نان تست سس مخصوص کلم بروکلی گوجه گیلاسی",
+    "price": ""
+  },
+  {
+    "en_name": "Garlic Bread",
+    "fa_name": "نان سیر",
+    "ingredients": "نان سیر",
+    "price": ""
+  },
+  {
+    "en_name": "Picante (Pepperoni)",
+    "fa_name": "پیکانته ( پپرونی)",
+    "ingredients": "خمیر سس مخصوص پنیر پپرونی",
+    "price": ""
+  },
+  {
+    "en_name": "Garlic & Steak",
+    "fa_name": "سیر و استیک",
+    "ingredients": "خمیر سس سیر پنیر قارچ گوشت استیک زیتون سیاه",
+    "price": ""
+  },
+  {
+    "en_name": "Carne (Roast Beef)",
+    "fa_name": "کارنه (رست بیف)",
+    "ingredients": "خمیر سس سیر قارچ رست بیف پنیر گوجه",
+    "price": ""
+  },
+  {
+    "en_name": "Mackenzie (Beef & Mushroom)",
+    "fa_name": "مکنزی (گوشت و قارچ)",
+    "ingredients": "خمیر سس مخصوص قارچ گوشت فلفل دلمه پنیر",
+    "price": ""
+  },
+  {
+    "en_name": "Antonio (Chicken & Spinach)",
+    "fa_name": "آنتانیو (مرغ اسفناج)",
+    "ingredients": "خمیر سس آلفردو مرغ قارچ اسفناج پنیر فلفل دلمه زیتون سیاه",
+    "price": ""
+  },
+  {
+    "en_name": "Special",
+    "fa_name": "اسپشیال",
+    "ingredients": "خمیر سس مخصوص میکس ژامبون‌ مرغ و بیکن گوجه فلفل دلمه",
+    "price": ""
+  },
+  {
+    "en_name": "Sicilian (Hot Dog)",
+    "fa_name": "سیسیلی (هات داگ)",
+    "ingredients": "خمیر سس مخصوص هات داگ پنیر قارچ فلفل دلمه زیتون سبز",
+    "price": ""
+  },
+  {
+    "en_name": "Romando (Roast Beef & Chicken)",
+    "fa_name": "روماندو (رست بیف و مرغ)",
+    "ingredients": "خمیر سس مخصوص رست بیف و مرغ قارچ فلفل دلمه گوجه گیلاسی",
+    "price": ""
+  },
+  {
+    "en_name": "Bacon Spinach",
+    "fa_name": "بیکن اسفناج",
+    "ingredients": "خمیر سس مخصوص قارچ بیکن اسفناج پنیر",
+    "price": ""
+  },
+  {
+    "en_name": "Toucan Special",
+    "fa_name": "ویژه توکان",
+    "ingredients": "خمیر سس مخصوص بیکن مرغ گوشت قارچ فلفل دلمه زیتون سیاه",
+    "price": ""
+  },
+  {
+    "en_name": "Garlic Bread",
+    "fa_name": "نان سیر",
+    "ingredients": "خمیر سس سیر پنیر ایتالیایی",
+    "price": ""
+  },
+  {
+    "en_name": "Pasta Chicken Alfredo",
+    "fa_name": "پاستا چیکن آلفردو",
+    "ingredients": "مرغ مزه‌دار شده پنه قارچ سس مخصوص جعفری گوجه گیلاسی پنیر پارمسان",
+    "price": ""
+  },
+  {
+    "en_name": "Pasta Chicken Italiano",
+    "fa_name": "پاستا چیکن ایتالیانو",
+    "ingredients": "مرغ مزه‌دار شده پنه قارچ سس مخصوص جعفری گوجه گیلاسی پنیر پارمسان",
+    "price": ""
+  },
+  {
+    "en_name": "Pasta Beef Alfredo",
+    "fa_name": "پاستا بیف آلفردو",
+    "ingredients": "گوشت طعم‌دار شده پنه قارچ سس مخصوص جعفری گوجه گیلاسی پنیر پارمسان",
+    "price": ""
+  },
+  {
+    "en_name": "Pasta Beef Italiano",
+    "fa_name": "پاستا بیف ایتالیانو",
+    "ingredients": "گوشت طعم‌دار شده پنه قارچ سس مخصوص جعفری گوجه گیلاسی پنیر پارمسان",
+    "price": ""
+  },
+  {
+    "en_name": "Pasta Fettuccine Pesto",
+    "fa_name": "پاستا فتوچینی پستو",
+    "ingredients": "مرغ مزه‌دار شده پنه سس مخصوص گوجه گیلاسی پنیر پارمسان",
+    "price": ""
+  },
+  {
+    "en_name": "Classic Burger",
+    "fa_name": "برگر کلاسیک",
+    "ingredients": "برگر ساده کاهو گوجه خیارشور سس مخصوص",
+    "price": ""
+  },
+  {
+    "en_name": "Cheeseburger",
+    "fa_name": "چیز برگر",
+    "ingredients": "برگر پنیر ورقه‌ای کاهو گوجه خیارشور سس مخصوص",
+    "price": ""
+  },
+  {
+    "en_name": "Mushroom Burger",
+    "fa_name": "ماشروم برگر",
+    "ingredients": "برگر قارچ و پنیر کاهو گوجه خیارشور سس مخصوص",
+    "price": ""
+  },
+  {
+    "en_name": "Mixed Burger",
+    "fa_name": "میکس برگر",
+    "ingredients": "سینه مرغ برگر پنیر ورقه‌ای کاهو گوجه خیارشور سس مخصوص",
+    "price": ""
+  },
+  {
+    "en_name": "Toucan Special Burger",
+    "fa_name": "برگر ویژه توکان",
+    "ingredients": "بیکن برگر پنیر ورقه‌ای کاهو گوجه خیارشور سس مخصوص",
+    "price": ""
+  },
+  {
+    "en_name": "Hot Dog Mushroom & Cheese",
+    "fa_name": "هات داگ قارچ و پنیر",
+    "ingredients": "هات داگ قارچ و پنیر کاهو گوجه خیارشور سس مخصوص",
+    "price": ""
+  },
+  {
+    "en_name": "Hot Dog Bacon",
+    "fa_name": "هات داگ بیکن",
+    "ingredients": "هات داگ بیکن کاهو گوجه خیارشور سس مخصوص",
+    "price": ""
+  },
+  {
+    "en_name": "Chicken",
+    "fa_name": "چیکن",
+    "ingredients": "قارچ و پنیر مرغ  کاهو گوجه خیارشور سس مخصوص",
+    "price": ""
+  },
+  {
+    "en_name": "Roast Beef",
+    "fa_name": "رست بیف",
+    "ingredients": "رست بیف کاهو گوجه خیارشور سس مخصوص پنیر ورقه‌ای",
+    "price": ""
+  },
+  {
+    "en_name": "Baked Ham",
+    "fa_name": "ژامبون تنوری",
+    "ingredients": "ژامبون تنوری کاهو گوجه خیارشور سس مخصوص قارچ و پنیر",
+    "price": ""
+  },
+  {
+    "en_name": "Fillet 3 Pieces Normal",
+    "fa_name": "فیله 3 تیکه نرمال",
+    "ingredients": "3 تیکه فیله مرغ مزه دار شده سیب زمینی سالاد کلم سس چیلی تای سس باربیکیو",
+    "price": ""
+  },
+  {
+    "en_name": "Fillet 5 Pieces Normal",
+    "fa_name": "فیله ۵ تیکه نرمال",
+    "ingredients": "5 تیکه فیله مرغ مزه دار شده سیب زمینی سالاد کلم سس چیلی تای سس باربیکیو",
+    "price": ""
+  },
+  {
+    "en_name": "Fillet 3 Pieces Spicy",
+    "fa_name": "فیله ۳ تیکه اسپایسی",
+    "ingredients": "3 تیکه فیله مرغ مزه‌دار شده سیب زمینی سالاد کلم سس چیلی تای سس باربیکیو",
+    "price": ""
+  },
+  {
+    "en_name": "Fillet 5 Pieces Spicy",
+    "fa_name": "فیله ۵ تیکه اسپایسی",
+    "ingredients": "5 تیکه فیله مرغ مزه دار شده سیب زمینی سالاد کلم سس چیلی تای سس باربیکیو",
+    "price": ""
+  },
+  {
+    "en_name": "Chinese Chicken Fingers",
+    "fa_name": "جوجه چینی",
+    "ingredients": "جوجه چینی سیب زمینی سالاد کلم سس تارتار سس چیلی تای",
+    "price": ""
+  },
+  {
+    "en_name": "Stromboli Hot Dog",
+    "fa_name": "استرامبولی هات داگ",
+    "ingredients": "خمیر سس مخصوص هات داگ قارچ پنیر",
+    "price": ""
+  },
+  {
+    "en_name": "Stromboli Roast Beef",
+    "fa_name": "استرامبولی رست بیف",
+    "ingredients": "خمیر سس مخصوص فیله گوساله قارچ پنیر ورقه‌ای",
+    "price": ""
+  },
+  {
+    "en_name": "Stromboli Chicken",
+    "fa_name": "استرامبولی چیکن",
+    "ingredients": "خمیر سس آلفردو قارچ و پنیر مرغ",
+    "price": ""
+  },
+  {
+    "en_name": "Stromboli Ham",
+    "fa_name": "استرامبولی ژامبون",
+    "ingredients": "ژامبون میکس قارچ سس مخصوص پنیر",
+    "price": ""
+  },
+  {
+    "en_name": "Stromboli Burger",
+    "fa_name": "استرامبولی برگر",
+    "ingredients": "خمیر برگر پپرونی ارچ پنیر ورقه‌ای پنیر سس مخصوص",
+    "price": ""
+  },
+  {
+    "en_name": "Chicken Steak",
+    "fa_name": "استیک مرغ",
+    "ingredients": "۲۵۰ گرم مرغ با سبزیجات",
+    "price": ""
+  },
+  {
+    "en_name": "Beef Tenderloin Steak",
+    "fa_name": "استیک فیله گوساله",
+    "ingredients": "۲۵۰ گرم فیله گوساله با سبزیجات",
+    "price": ""
+  },
+  {
+    "en_name": "Toucan Special Steak",
+    "fa_name": "استیک ویژه توکان",
+    "ingredients": "۱۵۰ گرم مرغ ۱۵۰ گرم فیله گوساله با سبزیجات",
+    "price": ""
+  }
+]
