@@ -14,10 +14,10 @@ body {
   box-sizing: border-box;
 }
 
-/* کادر غذا */
+/* کادر غذا - ارتفاع افزایش یافته برای فضای بیشتر */
 .food-card {
   width: 250px;
-  height: 250px;
+  height: 300px; /* افزایش ارتفاع: 250 → 300px (حدود 3 خط بیشتر) */
   background-color: white;
   border-radius: 12px;
   box-shadow: 0 0 18px 4px rgba(255, 165, 0, 0.8); /* نئون */
@@ -34,13 +34,13 @@ body {
 /* تصویر غذا */
 .food-img {
   width: 100%;
-  height: 60%;
+  height: 55%; /* کمی کاهش داده شد تا فضای بیشتری برای متن بماند */
   object-fit: cover;
   border-radius: 8px;
-  margin-bottom: 2px; /* فاصله خیلی کم برای نفس گرفتن */
+  margin-bottom: 2px;
 }
 
-/* اطلاعات غذا - متن در پایین‌ترین نقطه ممکن زیر تصویر */
+/* اطلاعات غذا - فضای بیشتر برای متن */
 .food-info {
   flex-grow: 1;
   text-align: center;
@@ -51,22 +51,31 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
   overflow: hidden;
+  min-height: 60px; /* حداقل فضا برای متن */
 }
 
 .food-info h3 {
   font-size: 18px;
   margin: 0;
   color: #000;
-  line-height: 1.2;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90%;
 }
 
 .food-info p {
   font-size: 14px;
   margin: 0;
   color: #000;
-  line-height: 1.2;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90%;
 }
 
 /* قیمت غذا */
@@ -79,31 +88,31 @@ body {
   color: #ffb84d; /* رنگ طلایی برای قیمت */
 }
 
-/* دکمه افزودن - موقعیت بالاتر و متن مرکز */
+/* دکمه افزودن - ارتفاع کمتر و متن در وسط */
 .add-btn {
   position: absolute;
-  bottom: 8px;           /* 2px بالاتر از قبل */
+  bottom: 8px;           /* کمی بالاتر از قبل */
   left: 10px;
   background-color: yellow;
   color: black;
-  padding: 10px 20px;
+  padding: 6px 14px;      /* کاهش پدینگ = ارتفاع کمتر */
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
   font-size: 14px;
-  line-height: 1.2;
+  line-height: 1;
 
-  /* مرکز کردن متن */
+  /* مرکز کردن دقیق متن */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   white-space: nowrap;
 
-  /* ارتفاع ثابت برای کنترل بهتر */
-  min-height: 36px;
+  min-height: 28px;       /* ارتفاع واقعی دکمه کمتر شد */
   width: auto;
+  max-width: 80px;
 }
 
 /* ریسپانسیو برای تصاویر */
@@ -210,11 +219,11 @@ body {
 @media (max-width: 768px) {
   .food-card {
     width: 100%;
-    height: auto;
+    height: 320px; /* ارتفاع بیشتر برای موبایل */
     margin: 10px 0;
   }
   .food-img {
-    height: 200px;
+    height: 45%;
   }
   .food-grid {
     grid-template-columns: 1fr 1fr;
