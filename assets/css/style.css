@@ -37,14 +37,14 @@ body {
   height: 60%;
   object-fit: cover;
   border-radius: 8px;
-  margin-bottom: 2px; /* فاصله خیلی کم — فقط برای جداشدگی بصری */
+  margin-bottom: 2px; /* فاصله خیلی کم برای نفس گرفتن */
 }
 
 /* اطلاعات غذا - متن در پایین‌ترین نقطه ممکن زیر تصویر */
 .food-info {
   flex-grow: 1;
   text-align: center;
-  padding: 2px 10px 5px; /* پدینگ بالا/پایین کاهش یافته */
+  padding: 2px 10px 5px;
   margin: 0;
   width: 100%;
   display: flex;
@@ -79,10 +79,10 @@ body {
   color: #ffb84d; /* رنگ طلایی برای قیمت */
 }
 
-/* دکمه افزودن */
+/* دکمه افزودن - موقعیت بالاتر و متن مرکز */
 .add-btn {
   position: absolute;
-  bottom: 10px;
+  bottom: 8px;           /* 2px بالاتر از قبل */
   left: 10px;
   background-color: yellow;
   color: black;
@@ -91,6 +91,19 @@ body {
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 14px;
+  line-height: 1.2;
+
+  /* مرکز کردن متن */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+
+  /* ارتفاع ثابت برای کنترل بهتر */
+  min-height: 36px;
+  width: auto;
 }
 
 /* ریسپانسیو برای تصاویر */
