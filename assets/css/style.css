@@ -1,3 +1,19 @@
+/* عمومی */
+body {
+  background-color: #070606;  /* بک‌گراند سیاه */
+  color: #fff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 /* کادر غذا */
 .food-card {
   width: 250px; /* سایز ثابت کادر غذا */
@@ -11,6 +27,7 @@
   align-items: center;
   margin: 10px;
   padding: 10px;
+  position: relative; /* برای استفاده از موقعیت‌دهی دکمه‌ها */
   overflow: hidden;
 }
 
@@ -18,16 +35,9 @@
 .food-img {
   width: 100%;
   height: 60%; /* تنظیم ارتفاع به نسبت ۶۰% از کادر */
-  object-fit: cover; /* مناسب برای حفظ تناسب تصویر بدون بیرون زدگی */
+  object-fit: cover; /* مناسب برای حفظ تناسب تصویر */
   margin-bottom: 10px;
   border-radius: 8px; /* گرد بودن گوشه‌ها */
-}
-
-/* ریسپانسیو برای تصاویر */
-.food-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* حفظ تناسب و جلوگیری از بیرون زدگی */
 }
 
 /* اطلاعات غذا */
@@ -36,19 +46,25 @@
   text-align: center;
   padding: 0 10px;
   margin-top: 10px;
+  width: 100%;
+  position: relative;
 }
 
-.food-info h3 {
-  font-size: 18px;
-  margin-bottom: 8px;
+/* قیمت غذا */
+.price {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffb84d; /* رنگ طلایی برای قیمت */
 }
 
-.food-info p {
-  font-size: 14px;
-  color: #bbb;
-}
-
+/* دکمه افزودن */
 .add-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
   background-color: yellow;
   color: black;
   padding: 10px 20px;
@@ -56,7 +72,13 @@
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
-  margin-top: 10px;
+}
+
+/* ریسپانسیو برای تصاویر */
+.food-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* حفظ تناسب و جلوگیری از بیرون زدگی */
 }
 
 /* ریسپانسیو - کادرها کنار هم */
