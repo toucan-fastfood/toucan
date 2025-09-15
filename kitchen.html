@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TOUCAN - آشپزخانه</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="header">
+    <div class="brand">
+      <div class="logo">K</div>
+      <div>
+        <div style="font-weight:800;font-size:18px">TOUCAN - آشپزخانه</div>
+        <div style="font-size:13px;color:#ddd">ماک‌آپ نمایش سفارش‌ها (نیاز به بک‌اند برای دریافت خودکار)</div>
+      </div>
+    </div>
+  </div>
+
+  <p>در این نسخه محلی: سفارش‌هایی که مشتری ارسال می‌کند در مرورگر محلی مشتری ذخیره می‌شود. برای دیدن سفارش‌ها در این صفحه، مشتری باید بعد از ارسال روی دکمه «نمایش برای آشپزخانه» کلیک کند تا لینک به این صفحه باز شود یا از یک بک‌اند استفاده کنید.</p>
+
+  <div style="margin-bottom:8px">
+    <button id="load-orders" class="send-btn">بارگذاری سفارش‌های محلی</button>
+    <button id="clear-orders" class="send-btn" style="background:#eee;color:#000">پاک کردن</button>
+  </div>
+
+  <div id="orders"></div>
+
+<script>
+(function(){
+  const ordersEl = document.getElementById('orders');
+  document.getElementById('load-orders').onclick = loadOrders;
+  document.getElementById('clear-orders').onclick = ()=>{
+    if(confirm('پاک کردن همه سفارش‌ها؟')) {
+      localStorage.removeItem('toucan_orders'); loadOrders();
+    }
+  };
+  function loadOrders(){
+    const raw = localStorage.getItem('toucan_orders') || '[]';
+    const arr = JSON.parse(raw);
+    ordersEl.innerHTML = '';
+    if(arr.length === 0) ordersEl.innerHTML = '<p>سفارشی موجود نیست.</p>';
+    arr.forEach(o=>{
+      const card = document.createElement('div');
+      card.className='food-card';
+      const left = document.createElement('div'); left.style.flex='1';
+      const h = document.createElement('h3'); h.textContent = 'میز ' + (o.table || '-');
+      const p = document.createElement('p'); p.textContent = o.text.replace(/\n/g,'\n');
+      const t = document.createElement('div'); t.textContent = 'مجموع: ' + (o.subtotal || 0) + ' تومان';
+      left.appendChild(h); left.appendChild(p); left.appendChild(t);
+      card.appendChild(left);
+      ordersEl.appendChild(card);
+    });
+  }
+  // initial
+  loadOrders();
+})();
+</script>
+</body>
+</html>
