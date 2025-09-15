@@ -73,8 +73,6 @@
   function parseCSV(text) {
     const lines = text.split(/\r?\n/).filter(l => l.trim() !== '');
     if(lines.length === 0) return [];
-    // if first line looks like header with non-numeric, remove or keep
-    // parse each line
     function parseLine(line) {
       const res=[]; let cur=''; let inQ=false;
       for(let i=0;i<line.length;i++){
@@ -89,10 +87,7 @@
       res.push(cur);
       return res;
     }
-    const parsed = lines.map(parseLine);
-    // If first row looks like header (non-numeric in many fields) we'll treat as header and remove it, but we rely on column positions.
-    // We'll just return parsed rows.
-    return parsed;
+    return lines.map(parseLine);
   }
 
   async function fetchFoods() {
@@ -100,8 +95,6 @@
       const resp = await fetch(CSV_PATH + '?t=' + Date.now());
       const text = await resp.text();
       const rows = parseCSV(text);
-      // map rows -> objects using column positions:
-      // 0: english_name (A) 1: farsi_name (B) 2: ingredients (C) 3: price (D) 4: whatsapp (E) 5: img_name (F) 6: img_folder (G)
       foods = rows.map((r, idx) => {
         return {
           id: (r[0] || ('item-'+idx)).toString().trim() || ('item-'+idx),
@@ -123,10 +116,8 @@
   }
 
   function reconcileCartWithFoods(){
-    // update cart item details (price/name) if changed in CSV. Keep qty unchanged.
     for(const key in cart){
       const entry = cart[key];
-      // find matching food by id (en) or fallback name
       const match = foods.find(f => f.id === entry.id || f.en === entry.en || f.fa === entry.fa);
       if(match){
         entry.price = match.price;
@@ -136,7 +127,6 @@
         entry.img_folder = match.img_folder;
         entry.img_name = match.img_name;
       } else {
-        // item removed from menu - mark it so user knows
         entry.removed = true;
       }
     }
@@ -175,11 +165,9 @@
   }
 
   function makeImagePath(f){
-    // join folder + name carefully
     let folder = (f.img_folder || '').trim();
     let name = (f.img_name || '').trim();
     if(folder && name){
-      // ensure single slash and trim spaces
       folder = folder.replace(/\s+$/,'').replace(/\\/g,'/').replace(/\s+/g,' ');
       let path = folder + (folder.endsWith('/') ? '' : '/') + name;
       return encodeURI(path);
@@ -258,14 +246,13 @@
     const groups = {};
     for(const id in cart){
       const it = cart[id];
-      if(!it.whatsapp) it.whatsapp = ''; // blank
+      if(!it.whatsapp) it.whatsapp = '';
       const num = sanitizeNumber(it.whatsapp || '');
       const key = num || '__NO_NUM__';
       if(!groups[key]) groups[key] = {num: num, items: [], subtotal:0};
       groups[key].items.push(it);
       groups[key].subtotal += (Number(it.price)||0) * it.qty;
     }
-    // create text messages
     const messages = [];
     for(const k in groups){
       const g = groups[k];
@@ -294,7 +281,7 @@
     if(msgs.length === 0) { alert('سبد خرید خالی است'); return; }
     if(msgs.length === 1){
       const m = msgs[0];
-      if(!m.to){ // no number provided - show modal with number input
+      if(!m.to){
         promptAndOpen(m.text);
         saveOrderForKitchen(m);
       } else {
@@ -302,9 +289,9 @@
         window.open(url, '_blank');
         saveOrderForKitchen(m);
       }
+      clearCart(); // 🟢 پاک‌سازی سبد بعد از ارسال
       return;
     }
-    // multiple recipients -> show modal with options
     const modal = document.getElementById('modal');
     const list = document.getElementById('recipient-list');
     list.innerHTML = '';
@@ -315,6 +302,7 @@
       btn.addEventListener('click', ()=> {
         if(!m.to) { promptAndOpen(m.text); saveOrderForKitchen(m); }
         else { window.open('https://wa.me/' + m.to + '?text=' + encodeURIComponent(m.text), '_blank'); saveOrderForKitchen(m); }
+        clearCart(); // 🟢 بعد از ارسال، خالی کن
       });
       div.appendChild(label); div.appendChild(btn);
       list.appendChild(div);
@@ -327,6 +315,8 @@
         else promptAndOpen(m.text);
         saveOrderForKitchen(m);
       });
+      clearCart(); // 🟢 بعد از ارسال همه، خالی کن
+      modal.style.display='none';
     };
   }
 
@@ -340,7 +330,6 @@
     }
   }
 
-  // Save order locally for kitchen mock (localStorage). Note: this is local to the browser.
   function saveOrderForKitchen(message){
     try{
       const raw = localStorage.getItem('toucan_orders') || '[]';
@@ -350,19 +339,15 @@
     }catch(e){ console.warn(e); }
   }
 
-  // load and render
   loadCart();
   fetchFoods();
   renderCart();
-  // poll to pick up CSV changes automatically (cache-busted)
   setInterval(fetchFoods, POLL_INTERVAL);
 
-  // event bindings
   document.getElementById('send-whatsapp').addEventListener('click', sendToWhatsApp);
   document.getElementById('clear-cart').addEventListener('click', ()=> {
     if(confirm('پاک کردن کامل فاکتور؟')) clearCart();
   });
-  // close modal when clicking outside box
   document.getElementById('modal').addEventListener('click', (ev)=>{
     if(ev.target === document.getElementById('modal')) document.getElementById('modal').style.display='none';
   });
