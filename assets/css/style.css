@@ -1,54 +1,85 @@
-/* --- تغییرات برای چسباندن متن به پایین تصویر --- */
-
-.food-card {
-  /* حالت flex باقی می‌ماند، اما layout داخلی عوض میشه */
-  position: relative;
+/* عمومی */
+body {
+  background-color: #070606;  /* بک‌گراند سیاه */
+  color: #fff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+/* کادر غذا */
+.food-card {
+  width: 250px;
+  height: 250px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 18px 4px rgba(255, 165, 0, 0.8); /* نئون */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* تصویر غذا */
 .food-img {
   width: 100%;
   height: 60%;
   object-fit: cover;
   border-radius: 8px;
-  margin-bottom: 0; /* حذف فاصله زیر تصویر */
-  display: block;
+  margin-bottom: 5px; /* فاصله بسیار کم برای نفس گرفتن */
 }
 
+/* اطلاعات غذا - متن دقیقاً زیر تصویر */
 .food-info {
-  position: absolute;
-  top: 60%; /* دقیقاً بعد از تصویر */
-  left: 10px;
-  right: 10px;
-  bottom: 50px; /* تا بالای قیمت و دکمه */
+  flex-grow: 1;
+  text-align: center;
+  padding: 5px 10px;
+  margin-top: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 0 10px;
-  text-align: center;
+  justify-content: flex-start;
+  gap: 4px;
   overflow: hidden;
 }
 
-.food-info h3,
-.food-info p {
-  margin: 4px 0;
+.food-info h3 {
+  font-size: 18px;
+  margin: 0;
   color: #000;
 }
 
-/* --- قیمت و دکمه افزودن (بدون تغییر — فقط موقعیتشون واضح‌تر شده) --- */
-.price,
+.food-info p {
+  font-size: 14px;
+  margin: 0;
+  color: #000;
+}
+
+/* قیمت غذا */
+.price {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffb84d; /* رنگ طلایی برای قیمت */
+}
+
+/* دکمه افزودن */
 .add-btn {
   position: absolute;
   bottom: 10px;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.price {
-  right: 10px;
-  color: #ffb84d;
-}
-
-.add-btn {
   left: 10px;
   background-color: yellow;
   color: black;
@@ -57,4 +88,119 @@
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+}
+
+/* ریسپانسیو برای تصاویر */
+.food-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ریسپانسیو - کادرها کنار هم */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
+  justify-items: center;
+  padding: 10px;
+  margin-bottom: 200px;  /* فضای پایین برای سبد خرید */
+}
+
+/* سبد خرید معلق */
+.cart-floating {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  align-items: flex-start;
+  z-index: 100;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.cart-floating .cart-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.cart-list {
+  max-height: 120px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+  padding: 5px;
+  background-color: #444;
+  border-radius: 5px;
+}
+
+.cart-item .item-name {
+  font-size: 14px;
+}
+
+.cart-item .item-qty {
+  font-weight: bold;
+}
+
+.cart-item button {
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cart-footer {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.cart-footer .total {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.cart-footer .send-btn {
+  background-color: yellow;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.cart-footer .clear-btn {
+  background-color: #555;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* برای موبایل */
+@media (max-width: 768px) {
+  .food-card {
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+  }
+  .food-img {
+    height: 200px;
+  }
+  .food-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
