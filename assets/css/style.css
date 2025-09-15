@@ -48,6 +48,25 @@ body {
   margin-top: 10px;
   width: 100%;
   position: relative;
+  overflow: hidden;
+}
+
+/* رنگ فونت اسم غذا و محتویات غذا */
+.food-info h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #000;  /* رنگ مشکی برای نام غذا */
+}
+
+.food-info p {
+  font-size: 14px;
+  color: #000;  /* رنگ مشکی برای محتویات غذا */
+  margin-top: 10px;
+}
+
+/* فاصله بین عکس و نوشته‌ها */
+.food-info {
+  margin-top: 10px; /* فاصله بین عکس و متن */
 }
 
 /* قیمت غذا */
