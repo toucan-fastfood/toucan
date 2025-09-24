@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+  <!-- صدا - موسیقی پس‌زمینه -->
+  <audio id="background-music" src="https://www.dash-smal.ir/assets/music/toucan/toucan.mp3" loop></audio>
+
   <div class="header">
     <div class="brand">
       <div class="logo">T</div>
@@ -35,6 +38,8 @@
     <div class="cart-actions">
       <button id="send-whatsapp" class="send-btn">ارسال سفارش به واتس‌اپ</button>
       <button id="clear-cart" class="send-btn" style="background:#eee;color:#000">پاک کردن</button>
+      <!-- دکمه موسیقی -->
+      <button id="music-toggle" title="پخش/توقف موسیقی"></button>
     </div>
   </div>
 
@@ -69,7 +74,7 @@
     return params.get(name);
   }
 
-  // CSV parser that handles quoted fields and commas inside quotes
+  // CSV parser
   function parseCSV(text) {
     const lines = text.split(/\r?\n/).filter(l => l.trim() !== '');
     if(lines.length === 0) return [];
@@ -87,7 +92,8 @@
       res.push(cur);
       return res;
     }
-    return lines.map(parseLine);
+    const parsed = lines.map(parseLine);
+    return parsed;
   }
 
   async function fetchFoods() {
@@ -246,7 +252,7 @@
     const groups = {};
     for(const id in cart){
       const it = cart[id];
-      if(!it.whatsapp) it.whatsapp = '';
+      if(!it.whatsapp) it.whatsapp = ''; // blank
       const num = sanitizeNumber(it.whatsapp || '');
       const key = num || '__NO_NUM__';
       if(!groups[key]) groups[key] = {num: num, items: [], subtotal:0};
@@ -281,15 +287,8 @@
     if(msgs.length === 0) { alert('سبد خرید خالی است'); return; }
     if(msgs.length === 1){
       const m = msgs[0];
-      if(!m.to){
-        promptAndOpen(m.text);
-        saveOrderForKitchen(m);
-      } else {
-        const url = 'https://wa.me/' + m.to + '?text=' + encodeURIComponent(m.text);
-        window.open(url, '_blank');
-        saveOrderForKitchen(m);
-      }
-      clearCart(); // 🟢 پاک‌سازی سبد بعد از ارسال
+      if(!m.to){ promptAndOpen(m.text); saveOrderForKitchen(m); }
+      else { const url = 'https://wa.me/' + m.to + '?text=' + encodeURIComponent(m.text); window.open(url, '_blank'); saveOrderForKitchen(m); }
       return;
     }
     const modal = document.getElementById('modal');
@@ -302,7 +301,6 @@
       btn.addEventListener('click', ()=> {
         if(!m.to) { promptAndOpen(m.text); saveOrderForKitchen(m); }
         else { window.open('https://wa.me/' + m.to + '?text=' + encodeURIComponent(m.text), '_blank'); saveOrderForKitchen(m); }
-        clearCart(); // 🟢 بعد از ارسال، خالی کن
       });
       div.appendChild(label); div.appendChild(btn);
       list.appendChild(div);
@@ -315,8 +313,6 @@
         else promptAndOpen(m.text);
         saveOrderForKitchen(m);
       });
-      clearCart(); // 🟢 بعد از ارسال همه، خالی کن
-      modal.style.display='none';
     };
   }
 
@@ -339,11 +335,73 @@
     }catch(e){ console.warn(e); }
   }
 
+  // --- مدیریت هوشمند موزیک با اسکرول و کلیک ---
+  const music = document.getElementById('background-music');
+  const toggleBtn = document.getElementById('music-toggle');
+
+  let isMusicInitialized = false;
+
+  function initMusic() {
+    if (isMusicInitialized) return;
+
+    // فعال‌سازی صدا با mute اولیه
+    music.muted = true;
+    music.play().then(() => {
+      music.muted = false;
+      isMusicInitialized = true;
+      music.play(); // شروع پخش واقعی
+      toggleBtn.classList.add('pause');
+      console.log("موسیقی فعال و در حال پخش");
+    }).catch(e => {
+      console.log("هنوز اجازه پخش داده نشده — کاربر باید دوباره تعامل داشته باشه");
+    });
+
+    // حذف event بعد از یک بار اجرا
+    removeListeners();
+  }
+
+  function removeListeners() {
+    document.removeEventListener('click', initMusic);
+    document.removeEventListener('touchstart', initMusic);
+    document.removeEventListener('scroll', initMusicOnce);
+  }
+
+  // اضافه کردن listener برای scroll (فقط یک بار)
+  function initMusicOnce() {
+    initMusic();
+    removeListeners();
+  }
+
+  document.addEventListener('click', initMusic);
+  document.addEventListener('touchstart', initMusic);
+  document.addEventListener('scroll', initMusicOnce);
+
+  // کنترل دکمه Play/Pause
+  toggleBtn.addEventListener('click', () => {
+    if (music.paused) {
+      music.play().catch(e => {
+        alert("برای پخش صدا، لطفاً یک بار روی صفحه کلیک کنید.");
+      });
+    } else {
+      music.pause();
+    }
+  });
+
+  music.addEventListener('play', () => {
+    toggleBtn.classList.add('pause');
+  });
+
+  music.addEventListener('pause', () => {
+    toggleBtn.classList.remove('pause');
+  });
+
+  // load and render
   loadCart();
   fetchFoods();
   renderCart();
   setInterval(fetchFoods, POLL_INTERVAL);
 
+  // event bindings
   document.getElementById('send-whatsapp').addEventListener('click', sendToWhatsApp);
   document.getElementById('clear-cart').addEventListener('click', ()=> {
     if(confirm('پاک کردن کامل فاکتور؟')) clearCart();
@@ -354,5 +412,32 @@
 
 })();
 </script>
+
+<!-- CSS دکمه موسیقی -->
+<style>
+  #music-toggle {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(1);
+    transition: transform 0.2s ease;
+  }
+  #music-toggle:hover {
+    transform: scale(1.15);
+  }
+  #music-toggle::after {
+    content: "▶️";
+  }
+  #music-toggle.pause::after {
+    content: "⏸️";
+  }
+</style>
 </body>
 </html>
